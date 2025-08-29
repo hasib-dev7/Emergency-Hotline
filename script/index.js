@@ -12,3 +12,13 @@ getElement("card-content-box").addEventListener("click", (e) => {
     heartCoinElement.innerText = updateCoin + 1;
   }
 });
+// call button on clik
+getElement("card-content-box").addEventListener("click", (e) => {
+  const callButton = e.target.className.includes("call-btn");
+  if (callButton) {
+    const cardBox = e.target.closest(".card-box");
+    const cardTitle =cardBox .querySelector(".card-title").innerText;
+    const hotlineNumber =cardBox .querySelector(".hotline-number").innerText;
+    alert(`📞 calling ${cardTitle} ${hotlineNumber}...`);
+  }
+});
