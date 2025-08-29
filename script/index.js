@@ -19,14 +19,14 @@ getElement("card-content-box").addEventListener("click", (e) => {
   const callButton = e.target.className.includes("call-btn");
   // checkin coin number
   if (coinValue < 20) {
-    alert("no calling");
+    alert("❌ আপনার পর্যাপ্ত কয়েন নেই। কল করতে কমপক্ষে ২০ কয়েন লাগবে।");
     return;
   }
-
   //
   if (callButton) {
     const cardBox = e.target.closest(".card-box");
     const cardTitle = cardBox.querySelector(".card-title").innerText;
+    const subTitle = cardBox.querySelector(".card-paragraph").innerText;
     const hotlineNumber = cardBox.querySelector(".hotline-number").innerText;
     //coin - 20 when call button click
     coinValue = coinValue - 20;
@@ -35,7 +35,7 @@ getElement("card-content-box").addEventListener("click", (e) => {
     const timeNow = new Date();
     const formateTime = timeNow.toLocaleTimeString();
     // calling show alert
-    alert(`📞 calling ${cardTitle} ${hotlineNumber}...`);
+    alert(`📞 calling ${subTitle} ${hotlineNumber}...`);
     // crate nwe div element
     const sectionContainer = getElement("card-container");
     const divContainer = document.createElement("div");
@@ -78,7 +78,7 @@ getElement("card-content-box").addEventListener("click", (e) => {
     copyCoin.innerText = copyCount;
 
     // copy number alert show
-    alert(`number copy ${hotlineNumberText}`);
+    alert(`নম্বর কপি হয়েছে : ${hotlineNumberText}`);
 
     // copy to clipboard
     navigator.clipboard.writeText(hotlineNumberText);
