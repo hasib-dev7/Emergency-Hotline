@@ -14,14 +14,25 @@ getElement("card-content-box").addEventListener("click", (e) => {
 });
 // call button on clik
 getElement("card-content-box").addEventListener("click", (e) => {
+  const coinIcon = getElement("coin-icon");
+  let coinValue = parseInt(coinIcon.innerText) || 0;
   const callButton = e.target.className.includes("call-btn");
+  //
+  if (coinValue < 20) {
+    alert("no calling");
+    return;
+  }
+  //coin - 20 when call button click
+  coinValue = coinValue - 20;
+  coinIcon.innerText = coinValue;
+  //
   if (callButton) {
     const cardBox = e.target.closest(".card-box");
     const cardTitle = cardBox.querySelector(".card-title").innerText;
     const hotlineNumber = cardBox.querySelector(".hotline-number").innerText;
     //  function
-    const timeNow=new Date();
-    const formateTime=timeNow.toLocaleTimeString()
+    const timeNow = new Date();
+    const formateTime = timeNow.toLocaleTimeString();
     // calling show alert
     alert(`📞 calling ${cardTitle} ${hotlineNumber}...`);
     // crate nwe div element
